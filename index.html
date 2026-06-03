@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ジョイフルアプリを開く</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+    }
+    .message {
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #ff9800; /* ジョイフル風のオレンジ */
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      // 最優先：ディープリンク（アプリ起動用URL）
+      var appUrl = "jfbbcaqrstamp://,xMUcxUi3GReHm7Mk1qGRT1qjfgqb/n6s1zxK/60t7uWcByzGJDBuZzT0uBgcSyHtnzDG6RS0cLKyt4ELxfO9JynqJAw+RKzUaGQfk58gJtM=";
+      
+      // バックアップ：有効期限が切れていた場合、またはアプリが開かなかった場合のURL
+      var backupUrl = "https://next.joyfull.support/nfc?t=c3RvcmVfaWQ9NzAyOSZ1dWlkPTE4NzBlZGE0LTJlOTctNDEyMC05MDYzLWJhN2U0ZWU1YTNlNiZjcmVhdGVkX2F0PTE3NDkwNDkyMDA=&source=nfc";
+
+      // 1. 最優先でアプリの起動を試みる
+      window.location.href = appUrl;
+
+      // 2. もし有効期限が切れている、あるいはアプリが起動しなくて画面が切り替わらなかった場合、
+      //    0.5秒（500ミリ秒）後に自動でバックアップURLへ転送する
+      setTimeout(function() {
+        window.location.href = backupUrl;
+      }, 500);
+    }
+  </script>
+</head>
+<body>
+  <div class="message">
+    <p>ジョイフルアプリを起動しています…</p>
+    <p>画面が変わらない場合は、自動的にバックアップURLへ切り替わります。</p>
+  </div>
+  
+  <a class="btn" href="https://next.joyfull.support/nfc?t=c3RvcmVfaWQ9NzAyOSZ1dWlkPTE4NzBlZGE0LTJlOTctNDEyMC05MDYzLWJhN2U0ZWU1YTNlNiZjcmVhdGVkX2F0PTE3NDkwNDkyMDA=&source=nfc">
+    アプリが開かない場合はこちら
+  </a>
+</body>
+</html>
